@@ -3,9 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: './dist',
     historyApiFallback: true,
@@ -20,16 +19,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.js$/,
-        enforce: "pre",
-        use: ["source-map-loader"],
-      },
-      {
         test: /.jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -40,9 +29,19 @@ module.exports = {
         }
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        enforce: 'pre',
+        use: 'tslint-loader'
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
-      },
+      }
     ],
   },
   resolve: {

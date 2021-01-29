@@ -1,3 +1,32 @@
-.hello {
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.indicator-text {
+  margin-top: 20px;
   text-align: center;
+}
+
+button.btn-primary {
+  background-color: #ff9b42;
+  border-radius: 0;
+  box-shadow: unset !important;
+  border: none;
+  outline: none !important;
+  width: 100%;
+
+  &:hover, &:active, &:focus {
+    background-color: #bfbbb8 !important;
+  }
+
+  &:focus:not(:hover) {
+    background-color: #ff9b42 !important;
+  }
+}
+
+.spinner-grow {
+  display: block;
+  margin: 24px auto;
 }

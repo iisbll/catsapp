@@ -1,0 +1,55 @@
+.home-page {
+  border: 1px solid #7d7d7c;
+  margin: 0 auto 24px;
+  max-width: 968px;
+  text-align: center;
+
+  .search-banner {
+    align-items: center;
+    background-image: url(https://i.pinimg.com/originals/ba/ec/e6/baece660ec8b8f3f6a45089e06cea01b.jpg);
+    background-position: 0% 97%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-flow: column;
+    height: 400px;
+    justify-content: center;
+    position: relative;
+
+   .banner-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top:  0;
+      background: #00000082;
+      z-index: 1;
+    }
+
+    form {
+      z-index: 2;
+    }
+  }
+
+  .cats-list {
+    padding: 24px;
+
+    .cat-content {
+      overflow: hidden;
+
+      .card-body {
+        padding: 0;
+      }
+    }
+  }
+}
+
+#breedSelect {
+  border: none;
+  cursor: pointer;
+  width: 300px;
+
+  &:hover {
+    // background-color: gold;
+  }
+}

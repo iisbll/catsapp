@@ -1,0 +1,19 @@
+.cat-page {
+  .not-found {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .cat-container {
+    border: 1px solid #7d7d7c !important;
+    margin: 24px auto;
+    max-width: 968px;
+  }
+}
+
+.cat-404 {
+  margin: 0 auto;
+  text-align: center;
+  width: 600px
+}
