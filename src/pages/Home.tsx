@@ -38,6 +38,9 @@ export default function HomePage(props: Props) {
   const history = useHistory();
   const location = useLocation();
 
+  // if a user navigates from a full-page loaded CatPage
+  // to HomePage, reinitialize the selectedBreed using
+  // the `breed` search parameter
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const currentBreed = searchParams.get("breed");

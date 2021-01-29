@@ -29,16 +29,21 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
+  // set the initial values for breeds
+  // added a placeholder bc react-bootstrap doesn't allow placeholders
+  // in Select
   useEffect(() => {
     sendRequest({ url: "/breeds", method: "get" })
       .then((data: Breed[]) => {
-        // just typed the placeholder as any
+        // just typed the placeholder as `any`
         setBreeds([{ id: "", name: "Pick a Cat Breed" } as any, ...data]);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
+  // if a `breed` is specified in the search params
+  // set that as the initial selectedBreed
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const currentBreed = searchParams.get("breed");
@@ -47,6 +52,10 @@ function App() {
     }
   }, [breeds]);
 
+  // query and load the cat images
+  // associated to the selectedBreed whenever it's updated
+  // - get total number of images via headers' `pagination-count`
+  //   to help with the "load more" functionality
   useEffect(() => {
     if (selectedBreed) {
       setLoading(true);
@@ -71,6 +80,7 @@ function App() {
     }
   }, [selectedBreed]);
 
+  // query more images of the selectedBreed using the page parameter
   useEffect(() => {
     if (selectedBreed) {
       setLoading(true);
@@ -84,6 +94,8 @@ function App() {
         }
       })
       .then((data: Cat[]) => {
+        // make sure `cats` values are unique to avoid 
+        // dupes + React key warnings
         const newCats = _.uniqBy([...cats, ...data], (c) => c.id);
         if (cats.length === newCats.length) {
           setCatCount(cats.length);
